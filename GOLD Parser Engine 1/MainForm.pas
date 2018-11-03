@@ -32,8 +32,8 @@ type
     procedure PrintParseTree(Text: String);
     procedure cmdCloseClick(Sender: TObject);
     procedure cmdOpenFileClick(Sender: TObject);
-    procedure FormCreate(Sender: TObject);
-    procedure FormDestroy(Sender: TObject);
+    procedure FormShow(Sender: TObject);
+    procedure FormClose(Sender: TObject; var Action: TCloseAction);
   private
     SL : TStringList;
     procedure AddToReport(Msg1, Msg2, Msg3, Msg4 : string; LN : integer);
@@ -46,6 +46,9 @@ var
   Main: TMain;
 
 implementation
+
+uses
+  IOUtils;
 
 const
 
@@ -130,7 +133,7 @@ begin
                Done := True;
             end;
          gpMsgSyntaxError:
-            begin  
+            begin
                txt := '';
                for n := 0 to GP.TokenTable.Count - 1 do
                   txt := txt + ' ' + GP.TokenTable[n].Name;
@@ -151,6 +154,8 @@ begin
                AddToReport('Accept', GP.CurrentReduction.ParentRule.Text, '', IntToStr(GP.CurrentReduction.ParentRule.TableIndex), GP.CurrentLineNumber);
                DrawReductionTree(GP.CurrentReduction);
                DrawTTree(GP.CurrentReduction);
+               if ParamCount >= 3 then
+                 TFile.WriteAllText(ParamStr(3), txtParseTree.Text);
                Done := True;
             end;
          gpMsgTokenRead:
@@ -177,7 +182,6 @@ begin
       end;
    end else
       ShowMessage('Input file could not be opened!');
-
 
    GP.Free;
 
@@ -252,24 +256,27 @@ begin
       txtCGTFilePath.Text := OpenDialog1.FileName;
 end;
 
-procedure TMain.FormCreate(Sender: TObject);
-begin
-
-   txtCGTFilePath.Text := ExtractFileDir(Application.ExeName) + '\simple.cgt';
-
-   //ShowMessage('Warning: This is the Alpha version of the GOLD Parser Engine Delphi version!'#13#10#13#10'Use it at youre own risk! I am not responsible for any damage wich might have been caused by this program!');
-   SL := TStringList.Create;
-
-end;
-
 procedure TMain.AddToReport(Msg1, Msg2, Msg3, Msg4: string; LN: integer);
 begin
   SL.Add(Format('"%s" , "%s" , "%s" , "%s" , "%d"', [Msg1,Msg2,Msg3,Msg4,LN]));
 end;
 
-procedure TMain.FormDestroy(Sender: TObject);
+procedure TMain.FormClose(Sender: TObject; var Action: TCloseAction);
 begin
   SL.Free;
+end;
+
+procedure TMain.FormShow(Sender: TObject);
+begin
+   if ParamCount >= 1 then
+     txtCGTFilePath.Text := ParamStr(1)
+   else
+     txtCGTFilePath.Text := ExtractFileDir(Application.ExeName) + '\simple.cgt';
+   if ParamCount >= 2 then
+     txtTestInput.Text := TFile.ReadAllText(ParamStr(2));
+
+   //ShowMessage('Warning: This is the Alpha version of the GOLD Parser Engine Delphi version!'#13#10#13#10'Use it at youre own risk! I am not responsible for any damage wich might have been caused by this program!');
+   SL := TStringList.Create;
 end;
 
 procedure TMain.DrawTTree(Reduction: TReduction);

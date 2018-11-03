@@ -12,8 +12,8 @@ object Main: TMain
   Font.Name = 'MS Sans Serif'
   Font.Style = []
   OldCreateOrder = False
-  OnCreate = FormCreate
-  OnDestroy = FormDestroy
+  OnClose = FormClose
+  OnShow = FormShow
   DesignSize = (
     619
     494)
@@ -28,10 +28,8 @@ object Main: TMain
     Anchors = [akLeft, akTop, akRight, akBottom]
     Style = tsFlatButtons
     TabOrder = 4
-    ExplicitWidth = 575
     object TabSheet1: TTabSheet
       Caption = 'Ansi Reduction Tree'
-      ExplicitWidth = 567
       DesignSize = (
         595
         243)
@@ -43,7 +41,6 @@ object Main: TMain
         Anchors = [akLeft, akTop, akRight, akBottom]
         Caption = ' Parse Tree '
         TabOrder = 0
-        ExplicitWidth = 556
         object txtParseTree: TMemo
           Left = 2
           Top = 15
@@ -99,14 +96,16 @@ object Main: TMain
           ParentFont = False
           ScrollBars = ssBoth
           TabOrder = 0
-          ExplicitWidth = 552
         end
       end
     end
     object TabSheet2: TTabSheet
       Caption = 'Messages'
       ImageIndex = 1
-      ExplicitWidth = 567
+      ExplicitLeft = 0
+      ExplicitTop = 0
+      ExplicitWidth = 0
+      ExplicitHeight = 0
       object Memo1: TMemo
         Left = 0
         Top = 0
@@ -115,13 +114,11 @@ object Main: TMain
         Align = alClient
         ScrollBars = ssBoth
         TabOrder = 0
-        ExplicitWidth = 567
       end
     end
     object TabSheet3: TTabSheet
       Caption = 'TreeView Reduction'
       ImageIndex = 2
-      ExplicitWidth = 567
       object TreeView1: TTreeView
         Left = 0
         Top = 0
@@ -135,7 +132,6 @@ object Main: TMain
         ReadOnly = True
         RowSelect = True
         TabOrder = 0
-        ExplicitWidth = 567
       end
     end
   end
@@ -206,7 +202,6 @@ object Main: TMain
     Caption = 'Close'
     TabOrder = 3
     OnClick = cmdCloseClick
-    ExplicitLeft = 512
   end
   object cmdParse: TButton
     Left = 527

@@ -257,6 +257,8 @@ begin
           end;
           Parser.ActionTables.Items[i] := NewActionTable;
         end;
+        else
+          raise Exception.Create('Bad Record Id');
       end;
     end;
   end;
