@@ -6,7 +6,7 @@ Here are additions for [GOLD Parsing System](http://www.goldparser.org) written 
 * **GOLD Parser Engine 5 (recommended)** - [GOLD Parser 5.0 by Theodore Tsirpanis](https://gitlab.com/teo-tsirpanis/gold-parser-lazarus) for Free Pascal and Lazarus, based on [goldengine for Java](https://github.com/ridencww/goldengine):
   * It has been adapted for Delphi compiler XE2 and higher.
   * Not dependents on third-party libraries.
-  * Can be compiled by any version of Delphi, including [the free Community Edition](https://www.embarcadero.com/products/delphi/starter).
+  * Can be compiled by any edition of Delphi, including [the free Community Edition](https://www.embarcadero.com/products/delphi/starter).
   * It recognizes both the old (.cgt) and the new enchanced (.egt) grammar file formats.
   * Some bugs were fixed in the original Theodore's parser.
 
