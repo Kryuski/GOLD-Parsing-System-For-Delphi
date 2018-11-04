@@ -36,7 +36,7 @@ type
     constructor Create; overload;
     constructor Create(n: string; st: TSymbolType; i: integer); overload;
     class function LiteralFormat(const src: string; ForceDelimiter: boolean): string;
-    function ToString: string; overload; override;
+    function ToString: string; reintroduce; overload;
     function ToString(const DelimitTerminals: boolean): string; overload;
     property SymbolGroup: TGroup read FGroup write FGroup;
     property Name: string read FName write FName;

@@ -39,7 +39,7 @@ type
     constructor Create(const sym: TSymbol; const dt: TReduction;
       const Pos: TPosition); overload;
     destructor Destroy; override;
-    function ToString: string; overload; override;
+    function ToString: string; reintroduce; overload;
     procedure AppendData(const s: string);
     property AsSymbol: TSymbol write SetAsSymbol;
     property Data: string read FData write FData;
