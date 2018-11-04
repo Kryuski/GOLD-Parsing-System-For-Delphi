@@ -13,7 +13,10 @@ uses
   cgt in '..\cgt.pas',
   characterset in '..\characterset.pas',
   fastate in '..\fastate.pas',
-  symbol in '..\symbol.pas';
+  symbol in '..\symbol.pas',
+  production in '..\production.pas',
+  scope in '..\scope.pas',
+  variable in '..\variable.pas';
 
 const
   HelpStr = 'Usage: GoldTreeParser [grammar_file] [source_file] [output_file]';
