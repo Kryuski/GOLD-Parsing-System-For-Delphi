@@ -41,7 +41,6 @@ contains
   scope in 'scope.pas',
   symbol in 'symbol.pas',
   token in 'token.pas',
-  variable in 'variable.pas',
-  gcontnrs in 'gcontnrs.pas';
+  variable in 'variable.pas';
 
 end.

@@ -92,7 +92,6 @@
         <DCCReference Include="symbol.pas"/>
         <DCCReference Include="token.pas"/>
         <DCCReference Include="variable.pas"/>
-        <DCCReference Include="gcontnrs.pas"/>
         <BuildConfiguration Include="Release">
             <Key>Cfg_2</Key>
             <CfgParent>Base</CfgParent>

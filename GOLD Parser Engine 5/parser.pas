@@ -32,13 +32,7 @@ const
   VERSION_5_HEADER = 'GOLD Parser Tables/5.0';
 
 type
-  TSMap = TDictionary<string, UnicodeString>;
-
-  { TStrStrMap }
-
-  TStrStrMap = class(TSMap)
-//**    function DefaultHashKey(const Key: string): integer; override;
-  end;
+  TStrStrMap = TDictionary<string, string>;
 
   { TAbstractGOLDParser }
 
@@ -105,13 +99,6 @@ implementation
 
 uses
   StrUtils;
-
-(****{ TStrStrMap }
-
-function TStrStrMap.DefaultHashKey(const Key: string): integer;
-begin
-  Result := HashString(Key);
-end; *)
 
 { TAbstractGOLDParser }
 
@@ -232,7 +219,7 @@ begin
       if Length(str) <> 0 then
       begin
         i := 0;
-        while (not found) and (i < FDFA[currdfa].Edges.Size) do
+        while (not found) and (i < FDFA[currdfa].Edges.Count) do
         begin
           edg := FDFA.Items[currdfa].Edges[i];
           if edg.Chars.Contains(str[1]) then
@@ -440,7 +427,7 @@ begin
             index := RetrieveInteger;
             cs := TCharacterSet.Create;
             FCharSetTable[index] := cs;
-            cs.Append(TCharacterRange.Create(RetrieveString));
+            cs.Add(TCharacterRange.Create(RetrieveString));
           end;
           crCHARRANGES:
           begin
@@ -451,7 +438,7 @@ begin
             cs := TCharacterSet.Create;
             FCharSetTable[index] := cs;
             while not IsRecordComplete do
-              cs.Append(TCharacterRange.Create(
+              cs.Add(TCharacterRange.Create(
                 WideChar(RetrieveInteger), WideChar(RetrieveInteger)));
           end;
           crSYMBOL:
@@ -493,7 +480,7 @@ begin
             RetrieveEntry;
             cnt := RetrieveInteger;
             for i := 0 to cnt - 1 do
-              grp.Nesting.Append(RetrieveInteger);
+              grp.Nesting.Add(RetrieveInteger);
             FGroupTable[index] := grp;
           end;
           crGROUPNESTING: ;
@@ -512,7 +499,7 @@ begin
               setindex := RetrieveInteger;
               target := RetrieveInteger;
               RetrieveEntry;
-              FDFA.Items[index].Edges.Append(
+              FDFA.Items[index].Edges.Add(
                 TFAEdge.Create(FCharSetTable[setindex], target));
             end;
           end;
@@ -528,7 +515,7 @@ begin
               lrat := TLRActionType(RetrieveInteger);
               vl := RetrieveInteger;
               RetrieveEntry;
-              lrs.Append(TLRAction.Create(smb, lrat, vl));
+              lrs.Add(TLRAction.Create(smb, lrat, vl));
             end;
           end;
           else

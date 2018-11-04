@@ -14,7 +14,7 @@ unit FAState;
 interface
 
 uses
-  Classes, SysUtils, CharacterSet, Symbol, GContnrs, Generics.Collections;
+  Classes, SysUtils, CharacterSet, Symbol, Generics.Collections;
 
 type
 
@@ -30,7 +30,7 @@ type
     property Target: integer read FTarget write FTarget;
   end;
 
-  TEdgeList = TGenVector<TFAEdge>;
+  TEdgeList = TList<TFAEdge>;
 
   { TFAState }
 

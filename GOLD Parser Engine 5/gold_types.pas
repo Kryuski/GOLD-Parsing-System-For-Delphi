@@ -14,7 +14,7 @@ unit gold_types;
 interface
 
 uses
-  Classes, SysUtils, Math, GContnrs, Generics.Collections;
+  Classes, SysUtils, Math, Generics.Collections;
 
 type
   TAdvanceMode = (amToken, amCharacter);
@@ -66,7 +66,7 @@ type
     stCOMMENT_LINE,   // Note COMMENT_LINE is deprecated starting at V5.
     stERROR);   // Error symbol
 
-  TIntegerList = TGenVector<integer>;
+  TIntegerList = TList<integer>;
 
   EParserException = class(Exception);
 

@@ -5,7 +5,15 @@ program GoldTreeParser;
 {$R *.res}
 
 uses
-  Classes, SysUtils, Parser, gold_types, Token;
+  Classes,
+  SysUtils,
+  parser in '..\parser.pas',
+  gold_types in '..\gold_types.pas',
+  token in '..\token.pas',
+  cgt in '..\cgt.pas',
+  characterset in '..\characterset.pas',
+  fastate in '..\fastate.pas',
+  symbol in '..\symbol.pas';
 
 const
   HelpStr = 'Usage: GoldTreeParser [grammar_file] [source_file] [output_file]';
@@ -101,8 +109,7 @@ begin
       DeleteFile('goldtrcc.txt');
     SetHeapTraceOutPut('goldtrcc.txt');
     {$ENDIF}
-    if Paramcount < 3 then
-    begin
+    if Paramcount < 3 then begin
       Write(HelpStr);
       Exit;
     end;

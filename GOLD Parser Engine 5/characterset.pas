@@ -14,7 +14,7 @@ unit CharacterSet;
 interface
 
 uses
-  Classes, SysUtils, Math, GContnrs, Generics.Collections, gold_types;
+  Classes, SysUtils, Math, Generics.Collections, gold_types;
 
 type
 
@@ -32,7 +32,7 @@ type
     property _End: WideChar read FEnd;
   end;
 
-  TCSet = TGenVector<TCharacterRange>;
+  TCSet = TList<TCharacterRange>;
 
   { TCharacterSet }
 

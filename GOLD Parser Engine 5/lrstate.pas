@@ -14,7 +14,7 @@ unit LRState;
 interface
 
 uses
-  Classes, SysUtils, GContnrs, Generics.Collections, Symbol, gold_types;
+  Classes, SysUtils, Generics.Collections, Symbol, gold_types;
 
 type
 
@@ -36,7 +36,7 @@ type
     property Value: integer read fvalue;
   end;
 
-  TLRList = TGenVector<TLRAction>;
+  TLRList = TList<TLRAction>;
 
   { TLRState }
 

@@ -66,7 +66,6 @@ type
     procedure SetContainer(AValue: TSymbol);
     procedure SetEnd(AValue: TSymbol);
     procedure SetStart(AValue: TSymbol);
-    function DefaultCompareIntegerItems(const A, B: Integer): Integer; //**
   public
     constructor Create;
     destructor Destroy; override;
@@ -201,12 +200,6 @@ begin
   FAdvMode := amCharacter;
   FEndingMode := emClosed;
   FNesting := TIntegerList.Create;
-  FNesting.OnCompareItems := DefaultCompareIntegerItems;
-end;
-
-function TGroup.DefaultCompareIntegerItems(const A, B: Integer): Integer;
-begin
-  Result := A-B; //**
 end;
 
 destructor TGroup.Destroy;
