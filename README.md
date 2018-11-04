@@ -7,7 +7,7 @@ Here are additions for [GOLD Parsing System](http://www.goldparser.org) written 
   * It has been adapted for Delphi compiler XE2 and higher.
   * Not dependents on third-party libraries.
   * Can be compiled by any edition of Delphi, including [the free Community Edition](https://www.embarcadero.com/products/delphi/starter).
-  * It recognizes both the old (.cgt) and the new enchanced (.egt) grammar file formats.
+  * It recognizes both the old (.cgt) and the new enhanced (.egt) grammar file formats.
   * Some bugs were fixed in the original Theodore's parser.
 
 * Grammars - it's a folder with grammars ready for use.
